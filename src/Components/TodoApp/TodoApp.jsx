@@ -1,12 +1,26 @@
 import React from 'react';
+import TodoForm from '../TodoForm/TodoForm';
+import TodoList from '../TodoList/TodoList';
 
-const TodoApp = () => {
-    return ( 
-        <>
-            <h1>TodoApp</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam a quo doloribus delectus minima distinctio eum sed omnis architecto! Quasi pariatur vero omnis vitae odio possimus beatae, voluptatem laudantium deserunt.</p>
-        </>
-     );
+class TodoApp extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    formSubmit = (event) => {
+        event.preventDefault();
+        console.log(event.target.todo.value)
+    }
+
+    render() {
+        return ( 
+            <>
+                <h1>TodoApp</h1>
+                <TodoForm onFormSubmit={this.formSubmit} />
+                <TodoList />
+            </>
+         );
+    }
 }
  
 export default TodoApp;

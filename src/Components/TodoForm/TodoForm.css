@@ -1,0 +1,41 @@
+.todo-text {
+    border: none;
+    padding: 15px 30px;
+    box-shadow: 0px 0px 4px #bbb;
+    border-radius: 4px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+}
+.todo-text:focus {
+    outline: none;
+}
+
+.todo-submit-btn {
+    width: 75px;
+    border: none;
+    box-shadow: 1px 1px 4px #dd1818, 2px 2px 0px #dd1818, 4px 4px 2px #dd1818;
+    background-color: #dd1818;
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    font-family: 'Outfit', sans-serif;
+    position: relative;
+    left: 10px;
+    bottom: 2px;
+    cursor: pointer;
+    transition: all 200ms linear;
+}
+
+.todo-submit-btn:hover {
+    background-color: #ca1515;
+    box-shadow: 1px 1px 4px #ca1515, 2px 2px 0px #ca1515, 4px 4px 2px #ca1515;
+}
+.todo-submit-btn:active {
+    background-color: #be1616;
+    box-shadow: 1px 1px 4px #dd1818;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+}
