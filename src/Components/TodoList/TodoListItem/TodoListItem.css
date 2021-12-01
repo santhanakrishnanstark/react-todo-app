@@ -37,3 +37,17 @@
     transform: scale(1.2);
     transition: all 500ms ease;
 }
+
+.todo-list-item.completed {
+    position: relative;
+}
+
+.todo-list-item.completed::after {
+    content: '';
+    width: 85%;
+    height: 2px;
+    background-color: black;
+    position: absolute;
+    right: 0;
+    top: 53%;
+}
