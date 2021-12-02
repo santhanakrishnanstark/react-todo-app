@@ -10,9 +10,7 @@ class TodoApp extends React.Component {
         }
     }
 
-    formSubmit = (event) => {
-        event.preventDefault();
-        const todo = event.target.todo.value;
+    formSubmit = (todo) => {
 
         if(todo) {
            let todoItem = {
@@ -30,13 +28,29 @@ class TodoApp extends React.Component {
     }
 
     changeItemState = (id) => {
-        console.log('to change', id)
-        let changedObj = this.state.todoList.filter(item => item.id === id)[0];
-        changedObj.isCompleted = !changedObj.isCompleted
-        
-        // update the current changed object item into real todo list.
+        const newList = this.state.todoList.map((listItem) => {
+
+            if(listItem.id === id) {
+                listItem.isCompleted = !listItem.isCompleted
+            }
+
+            return listItem;
+        })
+
+        // assign the newList to the global state todoList
         this.setState({
-            todoList: [ ...this.state.todoList, changedObj ]
+            todoList: newList
+        })
+    }
+
+    deleteTodoItem = (id) => {
+        const newList = this.state.todoList.filter((listItem)=> {
+            return listItem.id !== id;
+        })
+
+        // assign the newList to the global state todoList
+        this.setState({
+            todoList: newList
         })
     }
 
@@ -46,7 +60,9 @@ class TodoApp extends React.Component {
             <>
                 <h1>TodoApp</h1>
                 <TodoForm onFormSubmit={this.formSubmit} />
-                <TodoList list={this.state.todoList} changeState={(id) => this.changeItemState(id)} />
+                <TodoList list={this.state.todoList} 
+                    changeState={(id) => this.changeItemState(id)}
+                    deleteListItem={(id) => this.deleteTodoItem(id)} />
             </>
          );
     }

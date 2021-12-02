@@ -9,7 +9,7 @@ const TodoListItem = (props) => {
         <li className={classes}>
             <input type="checkbox" name="todo-check" id="todo-check" onChange={() => props.changeItemState(props.data.id)} />
             <div className="todo-item">{props.data.todo}</div>
-            <button><i class="fa fa-trash" aria-hidden="true"></i></button>
+            <button onClick={() => props.deleteListItem(props.data.id)}><i class="fa fa-trash" aria-hidden="true"></i></button>
         </li>
      );
 }
