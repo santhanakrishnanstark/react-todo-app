@@ -1,6 +1,8 @@
 import React from 'react';
+import LocalStorageService from '../../service/LocalStorage';
 import TodoForm from '../TodoForm/TodoForm';
 import TodoList from '../TodoList/TodoList';
+import { v4 as uuidv4 } from 'uuid';
 
 class TodoApp extends React.Component {
     constructor(props) {
@@ -10,11 +12,26 @@ class TodoApp extends React.Component {
         }
     }
 
+    componentDidMount = () => {
+       const data = LocalStorageService.getLocalData();
+
+       if(data) {
+           console.log(data)
+           this.setState({
+               todoList : data
+           })
+       }
+    }
+
+    componentDidUpdate = () => {
+        LocalStorageService.setLocalData(this.state.todoList);
+    }
+
     formSubmit = (todo) => {
 
         if(todo) {
            let todoItem = {
-            id: this.state.todoList.length + 1,
+            id: uuidv4(),
             todo,
             isCompleted: false
            }
@@ -55,7 +72,6 @@ class TodoApp extends React.Component {
     }
 
     render() {
-        console.log(this.state.todoList)
         return ( 
             <>
                 <h1>TodoApp</h1>
