@@ -4,6 +4,8 @@ import TodoForm from '../TodoForm/TodoForm';
 import TodoList from '../TodoList/TodoList';
 import { v4 as uuidv4 } from 'uuid';
 
+import checklist from '../../assets/todochecklist.png';
+
 class TodoApp extends React.Component {
     constructor(props) {
         super(props);
@@ -74,7 +76,9 @@ class TodoApp extends React.Component {
     render() {
         return ( 
             <>
-                <h1>TodoApp</h1>
+                <h1>
+                    <img src={checklist} alt="checklist" width="50" />
+                    TodoApp</h1>
                 <TodoForm onFormSubmit={this.formSubmit} />
                 <TodoList list={this.state.todoList} 
                     changeState={(id) => this.changeItemState(id)}
